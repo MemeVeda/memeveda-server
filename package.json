@@ -4,8 +4,8 @@
     "description": "Nodejs + Mongodb",
     "main": "index.js",
     "scripts": {
-        "start": "ts-node-dev --respawn src/app.ts",
-        "dev": "nodemon --exec npx ts-node src/app.ts"
+        "start": "ts-node-dev --respawn src/server.ts",
+        "dev": "nodemon --exec npx ts-node src/server.ts"
     },
     "repository": {
         "type": "git",
@@ -21,6 +21,7 @@
     "devDependencies": {
         "@types/express": "^4.17.13",
         "@types/node": "^17.0.18",
+        "dotenv": "^16.0.0",
         "nodemon": "^2.0.15",
         "ts-node": "^10.5.0",
         "ts-node-dev": "^1.1.8",
