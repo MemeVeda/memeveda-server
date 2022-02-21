@@ -1,10 +1,5 @@
-import { Schema, Types, model } from "mongoose";
-
-// 1. Create an interface representing a document in MongoDB.
-interface UserType {
-  name: string;
-  email: string;
-}
+import { Schema, model } from "mongoose";
+import { UserType } from "../types/types";
 
 // 2. Create a Schema corresponding to the document interface.
 const schema = new Schema<UserType>({
