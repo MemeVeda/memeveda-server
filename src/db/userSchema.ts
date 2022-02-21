@@ -3,10 +3,11 @@ import { UserType } from "../types/types";
 
 // 2. Create a Schema corresponding to the document interface.
 const schema = new Schema<UserType>({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
+  username: { type: String, required: true, unique: true, maxlength: 15 },
+  description: { type: String, required: true, maxlength: 40 },
+  imageUrl: { type: String },
 });
 
 const user = model<UserType>("user", schema);
 
-export { user, UserType };
+export { user };

@@ -1,18 +1,21 @@
 import { Router } from "express";
-import { user } from "../db/userSchema";
+import { card } from "../db/memeSchema";
 
 const router = Router();
 
 router.post("/", (req, res) => {
-  const { username, description, imageUrl } = req.body;
+  const { href, like, dislike, download, owner_id, tags } = req.body;
 
-  let newuser = new user({
-    username: username,
-    description: description,
-    imageUrl: imageUrl,
+  let newcard = new card({
+    href: href,
+    like: like,
+    dislike: dislike,
+    download: download,
+    owner_id: owner_id,
+    tags: tags,
   });
 
-  newuser
+  newcard
     .save()
     .then((result) => {
       return res.status(200).json(result);
@@ -26,7 +29,7 @@ router.post("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   const { id } = req.params;
-  user
+  card
     .find({
       _id: id,
     })
