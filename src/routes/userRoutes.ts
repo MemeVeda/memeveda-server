@@ -38,4 +38,15 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.get("/", (req, res) => {
+  user
+    .find({})
+    .then((docs) => {
+      return res.status(200).json(docs);
+    })
+    .catch((error) => {
+      return res.status(500).json({ message: error.message });
+    });
+});
+
 export default router;
