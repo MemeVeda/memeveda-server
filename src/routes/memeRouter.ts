@@ -27,6 +27,34 @@ router.post("/", (req, res) => {
     });
 });
 
+router.post("/:id", (req, res) => {
+  const { id } = req.params;
+  const { href, like, dislike, download, owner_id, tags } = req.body;
+
+  card
+    .updateOne(
+      { _id: id },
+      {
+        href,
+        like,
+        dislike,
+        download,
+        owner_id,
+        tags,
+      },
+      {
+        upsert: true,
+        returnOriginal: false,
+      }
+    )
+    .then((docs) => {
+      return res.status(200).json(docs);
+    })
+    .catch((error) => {
+      return res.status(500).json({ message: error.message });
+    });
+});
+
 router.get("/:id", (req, res) => {
   const { id } = req.params;
   card
@@ -35,6 +63,17 @@ router.get("/:id", (req, res) => {
     })
     .then((docs) => {
       return res.status(200).json(docs);
+    })
+    .catch((error) => {
+      return res.status(500).json({ message: error.message });
+    });
+});
+
+router.get("/", (req, res) => {
+  card
+    .find({})
+    .then((docs) => {
+      return res.status(200).send(docs);
     })
     .catch((error) => {
       return res.status(500).json({ message: error.message });

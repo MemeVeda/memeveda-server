@@ -7,7 +7,7 @@ const schema = new Schema<MemeCardType>({
   like: { type: Number, required: true, default: 0 },
   dislike: { type: Number, required: true, default: 0 },
   download: { type: Number, required: true, default: 0 },
-  owner_id: { type: String },
+  owner_id: { type: String, default: "" },
   tags: { type: [String] },
 });
 
