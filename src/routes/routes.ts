@@ -6,5 +6,4 @@ const router = Router();
 
 router.use("/user", userRouter);
 router.use("/meme", memeRouter);
-
 export default router;

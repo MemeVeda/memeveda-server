@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
-import { DB_CONN_STRING } from "../utils/contants";
+import dotenv from "dotenv";
+dotenv.config();
 
 async function connectDB() {
-  mongoose.connect(DB_CONN_STRING, {
+  mongoose.connect(process.env.DB_CONN_STRING || "", {
     //@ts-ignore
     useNewUrlParser: true,
     useUnifiedTopology: true,
