@@ -1,5 +1,6 @@
 export interface UserType {
   username: string;
+  password: string;
   description: string;
   imageUrl?: string;
 }

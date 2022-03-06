@@ -4,12 +4,13 @@ import { user } from "../db/userSchema";
 const router = Router();
 
 router.post("/", (req, res) => {
-  const { username, description, imageUrl } = req.body;
+  const { username, description, imageUrl, password } = req.body;
 
   let newuser = new user({
     username: username,
     description: description,
     imageUrl: imageUrl,
+    password: password,
   });
 
   newuser
@@ -24,11 +25,11 @@ router.post("/", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
-  const { id } = req.params;
+router.get("/:username", (req, res) => {
+  const { username } = req.params;
   user
-    .find({
-      _id: id,
+    .findOne({
+      username: username,
     })
     .then((docs) => {
       return res.status(200).json(docs);
