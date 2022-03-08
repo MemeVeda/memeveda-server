@@ -11,5 +11,4 @@ export interface MemeCardType {
   dislike: number;
   download: number;
   owner_id?: string;
-  tags?: string[];
 }
